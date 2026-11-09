@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Oportunități pentru Universitatea Mea · UPSC</title>
+  <style>
+    :root {
+      --bg: #080B16;
+      --bg2: #11182A;
+      --blue: #3185FF;
+      --violet: #8657FF;
+      --cyan: #39D9FF;
+      --tx: #F4F7FF;
+      --tx2: #9BA8C2;
+      --glass: rgba(17, 24, 42, .72);
+      --line: rgba(120, 150, 255, .22);
+      color-scheme: dark;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(70px + env(safe-area-inset-top, 0px));
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: radial-gradient(1200px 600px at 70% -10%, #1a2350 0, transparent 60%), var(--bg);
+      color: var(--tx);
+      font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0 0 auto;
+      height: env(safe-area-inset-top, 0px);
+      background: var(--bg);
+      z-index: 30;
+    }
+
+    a {
+      color: var(--cyan);
+    }
+
+    header {
+      position: sticky;
+      top: env(safe-area-inset-top, 0px);
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 5vw;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: .02em;
+      color: var(--tx);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .logo b {
+      color: var(--cyan);
+    }
+
+    nav {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+    }
+
+    nav a {
+      color: var(--tx2);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 99px;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    nav a:hover,
+    nav a:focus-visible {
+      color: var(--tx);
+      background: rgba(49, 133, 255, .18);
+      outline: none;
+    }
+
+    section {
+      padding: 72px 5vw;
+      max-width: 1180px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 4.2rem);
+      line-height: 1.05;
+      margin: 0 0 16px;
+      background: linear-gradient(90deg, var(--tx), var(--cyan) 60%, var(--violet));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      margin: 0 0 8px;
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      font-size: 13px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .lead {
+      color: var(--tx2);
+      max-width: 60ch;
+      font-size: 1.1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      border: 0;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue), var(--violet));
+      box-shadow: 0 0 28px rgba(49, 133, 255, .4);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(134, 87, 255, .6);
+    }
+
+    .btn.ghost {
+      background: transparent;
+      border: 1px solid var(--line);
+      box-shadow: none;
+      color: var(--tx);
+    }
+
+    .hero {
+      min-height: 78vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      background: var(--glass);
+      padding: 8px 16px;
+      border-radius: 99px;
+      font-size: 14px;
+      color: var(--tx2);
+    }
+
+    .chip b {
+      color: var(--tx);
+    }
+
+    #stage {
+      position: relative;
+      height: min(68vh, 560px);
+      min-height: 380px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      background: linear-gradient(#0b1124, #080B16);
+      margin-top: 24px;
+      touch-action: none;
+    }
+
+    #cv {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: grab;
+    }
+
+    .tools {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .tools button {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--glass);
+      color: var(--tx);
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .hint {
+      position: absolute;
+      right: 14px;
+      top: 12px;
+      font-size: 12px;
+      color: var(--tx2);
+      pointer-events: none;
+    }
+
+    #tip {
+      position: absolute;
+      pointer-events: none;
+      background: var(--glass);
+      border: 1px solid var(--cyan);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      opacity: 0;
+      transition: opacity .15s;
+    }
+
+    #panel {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      top: 36px;
+      width: min(340px, calc(100% - 24px));
+      background: var(--glass);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+      overflow: auto;
+      transform: translateX(120%);
+      transition: transform .35s ease;
+    }
+
+    #panel.open {
+      transform: none;
+    }
+
+    #panel h3 {
+      margin: 0 0 6px;
+    }
+
+    #panel p {
+      color: var(--tx2);
+      font-size: 14px;
+    }
+
+    #panel ul {
+      padding-left: 18px;
+      font-size: 14px;
+    }
+
+    .x {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      background: none;
+      border: 0;
+      color: var(--tx2);
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .locs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .locs button,
+    .f button {
+      font: inherit;
+      font-size: 14px;
+      cursor: pointer;
+      color: var(--tx2);
+      background: var(--bg2);
+      border: 1px solid var(--line);
+      padding: 7px 14px;
+      border-radius: 99px;
+    }
+
+    .locs button:hover,
+    .f button:hover,
+    .f button.on {
+      color: #fff;
+      border-color: var(--cyan);
+      background: rgba(57, 217, 255, .14);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: var(--glass);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--blue);
+      box-shadow: 0 8px 30px rgba(49, 133, 255, .2);
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--tx2);
+      font-size: 14px;
+      flex: 1;
+    }
+
+    .tag {
+      font-size: 12px;
+      color: var(--cyan);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: var(--tx2);
+    }
+
+    .bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 18px;
+    }
+
+    input[type=search] {
+      flex: 1;
+      min-width: 200px;
+      font: inherit;
+      color: var(--tx);
+      background: var(--bg2);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 11px 14px;
+    }
+
+    input:focus-visible,
+    button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 2px;
+    }
+
+    .f {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .note {
+      font-size: 13px;
+      color: var(--tx2);
+      margin-top: 14px;
+    }
+
+    .two {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .rv {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s, transform .7s;
+    }
+
+    .rv.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+
+      .rv {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+      }
+
+      section {
+        padding: 52px 5vw;
+      }
+
+      #panel {
+        top: auto;
+        height: 62%;
+        width: calc(100% - 24px);
+      }
+
+      .hint {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="logo" href="#acasa">Oportunități<b>·UPSC</b></a>
+    <nav aria-label="Navigare principală">
+      <a href="#acasa">Acasă</a>
+      <a href="#explore">Explore</a>
+      <a href="#facultati">Facultăți</a>
+      <a href="#oportunitati">Oportunități</a>
+      <a href="#comunitate">Comunitate</a>
+      <a href="#despre">Despre</a>
+    </nav>
+  </header>
+
+  <section id="acasa" class="hero">
+    <div class="eyebrow">Universitatea Pedagogică de Stat „Ion Creangă” din Chișinău</div>
+    <h1>Oportunități pentru Universitatea Mea</h1>
+    <p class="lead">Explorează campusul UPSC într-o machetă 3D interactivă: de la cele opt facultăți la burse, mobilități, cercetare, cariere și viața studențească.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+      <a class="btn" href="#explore">Explorează campusul</a>
+      <a class="btn ghost" href="#oportunitati">Vezi oportunitățile</a>
+    </div>
+    <div class="stats">
+      <span class="chip"><b>8</b> facultăți</span>
+      <span class="chip"><b>1940</b> anul înființării</span>
+      <span class="chip"><b>3</b> școli doctorale</span>
+      <span class="chip"><b>5</b> centre academice internaționale</span>
+    </div>
+  </section>
+
+  <section id="explore" class="rv">
+    <div class="eyebrow">Explore</div>
+    <h2>Campusul virtual</h2>
+    <p class="lead">Trage pentru a roti, folosește scroll sau butoanele +/− pentru zoom, apoi apasă pe o clădire. Macheta este stilizată și nu reprezintă amplasarea reală a clădirilor.</p>
+    <div id="stage">
+      <canvas id="cv" aria-label="Machetă 3D a campusului"></canvas>
+      <div class="hint">trage · zoom · click pe clădire</div>
+      <div id="tip"></div>
+      <div class="tools">
+        <button id="zi" aria-label="Apropie">+</button>
+        <button id="zo" aria-label="Îndepărtează">−</button>
+        <button id="rs" aria-label="Resetează vederea">⟲</button>
+      </div>
+      <aside id="panel" aria-live="polite">
+        <button class="x" id="px" aria-label="Închide">×</button>
+        <h3 id="pt"></h3>
+        <p id="pd"></p>
+        <ul id="pl"></ul>
+        <button class="btn" id="po" style="margin-top:8px">Vezi oportunități</button>
+      </aside>
+    </div>
+    <div class="locs" id="locs" role="list" aria-label="Locații din campus"></div>
+  </section>
+
+  <section id="facultati" class="rv">
+    <div class="eyebrow">Facultăți</div>
+    <h2>Descoperă domeniile</h2>
+    <p class="lead">Cele opt facultăți ale UPSC. Detaliile despre programe și specialități se află pe paginile oficiale.</p>
+    <div class="grid" id="fac"></div>
+  </section>
+
+  <section id="oportunitati" class="rv">
+    <div class="eyebrow">Opportunities</div>
+    <h2>Oportunități pentru studenți</h2>
+    <p class="lead">Anunțuri și direcții preluate de pe upsc.md (noiembrie 2026). Termenele și condițiile de eligibilitate se verifică întotdeauna la sursa oficială.</p>
+    <div class="bar">
+      <input type="search" id="q" placeholder="Caută după cuvinte-cheie…" aria-label="Caută oportunități">
+      <div class="f" id="flt"></div>
+    </div>
+    <div class="grid" id="opp"></div>
+    <p class="note" id="none" hidden>Nicio oportunitate nu corespunde căutării.</p>
+    <p class="note">Platforma nu inventează termene sau condiții. Fiecare card trimite la pagina oficială UPSC.</p>
+  </section>
+
+  <section id="comunitate" class="rv">
+    <div class="eyebrow">Community</div>
+    <h2>Viața studențească</h2>
+    <div class="grid">
+      <div class="card">
+        <span class="tag">Autoguvernare</span>
+        <h3>Organizații studențești</h3>
+        <p>Autoguvernanța studențească și asociațiile universitare.</p>
+        <a href="https://upsc.md/studenti/asociatii-universitare-studentesti/" target="_blank" rel="noopener">Pagina oficială →</a>
+      </div>
+      <div class="card">
+        <span class="tag">Evenimente</span>
+        <h3>Activități și evenimente</h3>
+        <p>Balul Bobocilor, campanii, conferințe și alte activități studențești.</p>
+        <a href="https://upsc.md/studenti/activitati-si-evenimente-studentesti/" target="_blank" rel="noopener">Pagina oficială →</a>
+      </div>
+      <div class="card">
+        <span class="tag">Sport</span>
+        <h3>Campusul Sportiv Universitar</h3>
+        <p>Infrastructură și activități sportive pentru studenți.</p>
+        <a href="https://upsc.md/organizare/csu/" target="_blank" rel="noopener">Pagina oficială →</a>
+      </div>
+      <div class="card">
+        <span class="tag">Cultură</span>
+        <h3>Ansamblul „Ciuleandra”</h3>
+        <p>Ansamblul de muzică și dans popular al universității.</p>
+        <a href="https://upsc.md/organizare/ansamblul-model-de-muzica-si-dans-popular-ciuleandra/" target="_blank" rel="noopener">Pagina oficială →</a>
+      </div>
+      <div class="card">
+        <span class="tag">Alumni</span>
+        <h3>Rețeaua absolvenților</h3>
+        <p>Rămâi conectat cu comunitatea UPSC după absolvire.</p>
+        <a href="https://upsc.md/studenti/alumni/" target="_blank" rel="noopener">Pagina oficială →</a>
+      </div>
+      <div class="card">
+        <span class="tag">Calendar</span>
+        <h3>Calendarul evenimentelor</h3>
+        <p>Evenimentele viitoare ale universității.</p>
+        <a href="https://upsc.md/calendar-evenimente/" target="_blank" rel="noopener">Vezi calendarul →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="despre" class="rv">
+    <div class="eyebrow">About</div>
+    <h2>Despre universitate</h2>
+    <div class="two">
+      <p class="lead">UPSC a fost formată în 1940 ca Institutul Pedagogic Moldovenesc de Stat, a primit numele „Ion Creangă” în 1955 și a devenit universitate în 1992. În 2022 a absorbit Universitatea de Stat din Tiraspol, Institutul de Științe ale Educației și Institutul de Formare Continuă. Astăzi este un centru național de formare a cadrelor didactice.</p>
+      <div class="card">
+        <h3>Contact</h3>
+        <p>Chișinău, str. Ion Creangă 1, MD-2069<br>Admitere (licență și master): admiterea@upsc.md, +373 68 68 62 64<br>Secretariat: secretariat@upsc.md<br>Program: luni–vineri, 08:00–16:30</p>
+        <a class="btn" href="https://upsc.md/" target="_blank" rel="noopener" style="text-align:center">Site-ul oficial upsc.md</a>
+      </div>
+    </div>
+  </section>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    const U = "https://upsc.md/";
+
+    const B = [
+      {
+        id: "fac", n: "Facultăți", c: 0x3185ff, p: [0, 0], s: [3.2, 2.6, 2],
+        d: "Opt facultăți care pregătesc cadre didactice la licență, master și doctorat.",
+        l: [
+          ["Toate facultățile", U + "organizare/"],
+          ["Planuri de învățământ", U + "studii/planuri-de-invatamant/"]
+        ],
+        f: "Admitere"
+      },
+      {
+        id: "bib", n: "Biblioteca Științifică", c: 0x39d9ff, p: [-4.6, -1.2], s: [2, 1.6, 2.4],
+        d: "Resurse și materiale educaționale pentru studiu și cercetare.",
+        l: [
+          ["Pagina bibliotecii", U + "organizare/biblioteca-stiintifica/"],
+          ["Cercetare", U + "cercetare/"]
+        ],
+        f: "Granturi"
+      },
+      {
+        id: "inov", n: "Clasa Viitorului", c: 0x8657ff, p: [4.6, -1.4], s: [2, 3.2, 1.8],
+        d: "Centrul Național de Inovații Digitale în Educație și centre de formare continuă.",
+        l: [
+          ["Clasa Viitorului", U + "organizare/ccv/"],
+          ["Formare continuă", U + "formare-continua/"]
+        ],
+        f: "Concursuri"
+      },
+      {
+        id: "int", n: "Centrul Internațional", c: 0x39d9ff, p: [-4, 3.2], s: [2.2, 1.8, 2],
+        d: "Mobilități, proiecte de cooperare și centre academice: american, francofon, DAAD, OeAD, polonez.",
+        l: [
+          ["Mobilități – anunțuri", U + "international/mobilitati/anunturi/"],
+          ["Centre academice", U + "international/centre-academice-internationale/"]
+        ],
+        f: "Mobilități"
+      },
+      {
+        id: "car", n: "Centrul de Carieră", c: 0x3185ff, p: [4.2, 3], s: [2, 2.2, 1.8],
+        d: "Consiliere profesională, ghidare în carieră și oportunități de angajare.",
+        l: [
+          ["Ghidare în carieră", U + "studenti/cgcc/"],
+          ["Oportunități de angajare", U + "studenti/oportunitati-angajare/"]
+        ],
+        f: "Carieră"
+      },
+      {
+        id: "stu", n: "Centrul Studențesc", c: 0x8657ff, p: [0, 5.2], s: [3, 1.5, 1.8],
+        d: "Autoguvernare, alumni, facilități, campus sportiv și activități studențești.",
+        l: [
+          ["Pagina studenților", U + "studenti/"],
+          ["Facilități și beneficii", U + "studenti/facilitati-si-beneficii-pentru-studenti/"]
+        ],
+        f: "Comunitate"
+      }
+    ];
+
+    const FAC = [
+      ["Arte Vizuale și Design", "https://arte.upsc.md/"],
+      ["Filologie și Istorie", U + "organizare/facultatea-filologie-istorie/"],
+      ["Limbi și Literaturi Străine", U + "organizare/facultatea-limbi-literaturi-straine/"],
+      ["Psihologie și Psihopedagogie Specială", U + "organizare/facultatea-psihologie-psihopedagogie/"],
+      ["Științe ale Educației", U + "organizare/facultatea-stiinte-educatie/"],
+      ["Fizică, Matematică și Tehnologii Informaționale", U + "organizare/facultatea-fizica-matematica-ti/"],
+      ["Biologie și Chimie", U + "organizare/facultatea-biologie-si-chimie/"],
+      ["Geografie", U + "organizare/facultatea-geografie/"]
+    ];
+
+    const O = [
+      ["Burse", "Burse de cercetare „Eugen Ionescu” 2026", "Program de burse de cercetare doctorală și postdoctorală, anunțat ca deschis.", "04.11.2026", U + "2026/11/04/programul-de-burse-de-cercetare-doctorala-si-postdoctorala-eugen-ionescu-2026-deschis/"],
+      ["Granturi", "Concurs de granturi „In Memoriam Vasile Cojocaru”", "Concurs de granturi lansat de UPSC.", "03.11.2026", U + "2026/11/03/lansarea-concursului-pentru-acordarea-grantului-in-memoriam-vasile-cojocaru/"],
+      ["Mobilități", "Mobilități academice", "Anunțuri despre mobilități pentru studenți și cadre didactice, inclusiv prin parteneri precum Erasmus+ și DAAD.", "pagină permanentă", U + "international/mobilitati/anunturi/"],
+      ["Carieră", "Oportunități de angajare", "Locuri de muncă și ghidare profesională pentru studenți și absolvenți.", "pagină permanentă", U + "studenti/oportunitati-angajare/"],
+      ["Carieră", "Rezident la CREANGĂ", "Program dedicat tinerilor specialiști, prezentat pe site-ul UPSC.", "pagină permanentă", U + "rezident-la-creanga/"],
+      ["Concursuri", "Concursuri și olimpiade 2025–2026", "Concursuri și olimpiade organizate de UPSC în anul de studii 2025–2026.", "02.02.2026", U + "2026/02/02/concursuri-si-olimpiade-organizate-de-upsc-in-anul-de-studii-2025-2026/"],
+      ["Concursuri", "Conferința STEAM, ediția a VI-a", "Conferință științifică internațională despre abordări inter/transdisciplinare în predarea științelor reale.", "03.11.2026", U + "2026/11/03/conferinta-stiintifica-internationala-abordari-inter-transdisciplinare-in-predarea-stiintelor-reale-concept-steam-editia-a-vi-a-2026/"],
+      ["Comunitate", "Balul Bobocilor 2026", "Evenimentul tradițional al studenților din anul I.", "04.11.2026", U + "2026/11/04/balul-bobocilor-2026-un-eveniment-al-tineretii-talentului-si-emotiilor-frumoase/"],
+      ["Admitere", "Admitere 2026", "Informații pentru candidați, plus pregătire pentru BAC și campania „Întreabă un student”.", "pagină permanentă", U + "admitere/admitere-2026/"]
+    ];
+
+    /* UI */
+    const $ = s => document.querySelector(s);
+
+    $("#fac").innerHTML = FAC.map(f =>
+      `<a class="card" href="${f[1]}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><span class="tag">Facultate</span><h3>${f[0]}</h3><p>Programe, specialități și contacte pe pagina oficială.</p><span class="meta" style="color:var(--cyan)">Deschide pagina →</span></a>`
+    ).join("");
+
+    const cats = ["Toate", ...new Set(O.map(o => o[0]))];
+    let cat = "Toate";
+
+    function fcat(c) {
+      cat = c;
+      rend();
+    }
+
+    function rend() {
+      $("#flt").innerHTML = cats.map(c =>
+        `<button class="${c === cat ? "on" : ""}" data-c="${c}">${c}</button>`
+      ).join("");
+
+      const q = $("#q").value.toLowerCase().trim();
+      const r = O.filter(o =>
+        (cat === "Toate" || o[0] === cat) &&
+        (!q || (o[1] + o[2] + o[0]).toLowerCase().includes(q))
+      );
+
+      $("#opp").innerHTML = r.map(o =>
+        `<article class="card"><span class="tag">${o[0]}</span><h3>${o[1]}</h3><p>${o[2]}</p><span class="meta">Organizator: UPSC · Publicat: ${o[3]}<br>Termen și eligibilitate: vezi sursa oficială</span><a href="${o[4]}" target="_blank" rel="noopener">Pagina oficială →</a></article>`
+      ).join("");
+
+      $("#none").hidden = r.length > 0;
+    }
+
+    $("#flt").addEventListener("click", e => {
+      if (e.target.dataset.c) fcat(e.target.dataset.c);
+    });
+    $("#q").addEventListener("input", rend);
+    rend();
+
+    $("#locs").innerHTML = B.map(b =>
+      `<button role="listitem" data-id="${b.id}">${b.n}</button>`
+    ).join("");
+
+    $("#locs").addEventListener("click", e => {
+      if (e.target.dataset.id) sel(B.find(b => b.id === e.target.dataset.id));
+    });
+
+    let cur = null;
+
+    function sel(b) {
+      cur = b;
+      $("#pt").textContent = b.n;
+      $("#pd").textContent = b.d;
+      $("#pl").innerHTML = b.l.map(l =>
+        `<li><a href="${l[1]}" target="_blank" rel="noopener">${l[0]}</a></li>`
+      ).join("");
+      $("#panel").classList.add("open");
+      focusB(b);
+    }
+
+    $("#px").onclick = () => {
+      $("#panel").classList.remove("open");
+      cur = null;
+      focusB(null);
+    };
+
+    $("#po").onclick = () => {
+      if (cur) {
+        fcat(cur.f);
+        document.getElementById("oportunitati").scrollIntoView();
+      }
+    };
+
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("in");
+        io.unobserve(e.target);
+      }
+    }), { threshold: .08 });
+
+    document.querySelectorAll(".rv").forEach(el => io.observe(el));
+
+    /* 3D */
+    let focusB = () => {};
+
+    (function () {
+      const cv = $("#cv"), stage = $("#stage");
+      let R;
+
+      try {
+        R = new THREE.WebGLRenderer({ canvas: cv, antialias: true, alpha: true });
+      } catch (e) {
+        stage.style.display = "none";
+        return;
+      }
+
+      R.setPixelRatio(Math.min(devicePixelRatio, 2));
+
+      const sc = new THREE.Scene();
+      sc.fog = new THREE.Fog(0x080b16, 14, 34);
+
+      const cam = new THREE.PerspectiveCamera(45, 1, .1, 100);
+
+      sc.add(new THREE.AmbientLight(0x8899ff, .6));
+
+      const pl = new THREE.PointLight(0x8657ff, 1.4, 40);
+      pl.position.set(0, 9, 2);
+      sc.add(pl);
+
+      const pl2 = new THREE.PointLight(0x39d9ff, 1, 30);
+      pl2.position.set(-8, 5, 8);
+      sc.add(pl2);
+
+      const g = new THREE.GridHelper(26, 26, 0x3185ff, 0x1b2550);
+      g.material.transparent = true;
+      g.material.opacity = .5;
+      sc.add(g);
+
+      const meshes = [];
+
+      B.forEach(b => {
+        const geo = new THREE.BoxGeometry(...b.s);
+        const m = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({
+          color: 0x141c3a,
+          emissive: b.c,
+          emissiveIntensity: .18,
+          roughness: .5,
+          metalness: .4
+        }));
+        m.position.set(b.p[0], b.s[1] / 2, b.p[1]);
+        m.userData = b;
+
+        const ed = new THREE.LineSegments(
+          new THREE.EdgesGeometry(geo),
+          new THREE.LineBasicMaterial({ color: b.c })
+        );
+        m.add(ed);
+
+        sc.add(m);
+        meshes.push(m);
+        b.mesh = m;
+      });
+
+      const N = 220, pa = new Float32Array(N * 3);
+      for (let i = 0; i < N * 3; i++) pa[i] = (Math.random() - .5) * 26;
+      pa.forEach((v, i) => {
+        if (i % 3 === 1) pa[i] = Math.random() * 9;
+      });
+
+      const pg = new THREE.BufferGeometry();
+      pg.setAttribute("position", new THREE.BufferAttribute(pa, 3));
+      sc.add(new THREE.Points(pg, new THREE.PointsMaterial({
+        color: 0x39d9ff,
+        size: .05,
+        transparent: true,
+        opacity: .7
+      })));
+
+      const rm = matchMedia("(prefers-reduced-motion:reduce)").matches;
+      const D = { th: .6, ph: 1.0, r: 15 };
+      let T = { ...D }, auto = !rm, hov = null, foc = null;
+
+      const tip = $("#tip"), ray = new THREE.Raycaster(), mv = new THREE.Vector2();
+
+      function size() {
+        const w = stage.clientWidth, h = stage.clientHeight;
+        R.setSize(w, h, false);
+        cam.aspect = w / h;
+        cam.updateProjectionMatrix();
+      }
+
+      new ResizeObserver(size).observe(stage);
+      size();
+
+      function pos() {
+        const { th, ph, r } = T;
+        cam.position.set(
+          r * Math.sin(ph) * Math.sin(th),
+          r * Math.cos(ph),
+          r * Math.sin(ph) * Math.cos(th)
+        );
+        cam.position.z += 2;
+        cam.lookAt(0, 1, 2);
+      }
+
+      function pick(e) {
+        const rc = cv.getBoundingClientRect();
+        mv.set(
+          (e.clientX - rc.left) / rc.width * 2 - 1,
+          -((e.clientY - rc.top) / rc.height) * 2 + 1
+        );
+        ray.setFromCamera(mv, cam);
+        const h = ray.intersectObjects(meshes)[0];
+        return h ? h.object.userData : null;
+      }
+
+      let dn = null, moved = 0, lx = 0, ly = 0;
+
+      cv.addEventListener("pointerdown", e => {
+        dn = 1;
+        moved = 0;
+        lx = e.clientX;
+        ly = e.clientY;
+        auto = false;
+        cv.setPointerCapture(e.pointerId);
+        cv.style.cursor = "grabbing";
+      });
+
+      cv.addEventListener("pointermove", e => {
+        if (dn) {
+          const dx = e.clientX - lx, dy = e.clientY - ly;
+          moved += Math.abs(dx) + Math.abs(dy);
+          lx = e.clientX;
+          ly = e.clientY;
+          T.th -= dx * .007;
+          T.ph = Math.min(1.45, Math.max(.35, T.ph - dy * .006));
+        } else {
+          hov = pick(e);
+          cv.style.cursor = hov ? "pointer" : "grab";
+          const rc = stage.getBoundingClientRect();
+          tip.style.opacity = hov ? 1 : 0;
+          if (hov) {
+            tip.textContent = hov.n;
+            tip.style.left = e.clientX - rc.left + 14 + "px";
+            tip.style.top = e.clientY - rc.top + 14 + "px";
+          }
+        }
+      });
+
+      cv.addEventListener("pointerup", e => {
+        dn = null;
+        cv.style.cursor = "grab";
+        if (moved < 6) {
+          const b = pick(e);
+          if (b) sel(b);
+        }
+      });
+
+      cv.addEventListener("pointerleave", () => {
+        hov = null;
+        tip.style.opacity = 0;
+      });
+
+      cv.addEventListener("wheel", e => {
+        if (e.ctrlKey || Math.abs(e.deltaY) > 0) {
+          e.preventDefault();
+          T.r = Math.min(24, Math.max(7, T.r + e.deltaY * .01));
+        }
+      }, { passive: false });
+
+      $("#zi").onclick = () => T.r = Math.max(7, T.r - 2);
+      $("#zo").onclick = () => T.r = Math.min(24, T.r + 2);
+      $("#rs").onclick = () => {
+        T = { ...D };
+        $("#px").click();
+      };
+
+      focusB = b => { foc = b; };
+
+      let cs = { ...D };
+
+      function loop() {
+        if (auto) T.th += .0016;
+
+        cs.th += (T.th - cs.th) * .1;
+        cs.ph += (T.ph - cs.ph) * .1;
+        cs.r += (T.r - cs.r) * .1;
+
+        const k = T;
+        T = cs;
+        pos();
+        T = k;
+
+        meshes.forEach(m => {
+          const b = m.userData, on = (b === hov || b === foc);
+          m.material.emissiveIntensity += ((on ? .9 : .18) - m.material.emissiveIntensity) * .15;
+          m.scale.y += ((on ? 1.08 : 1) - m.scale.y) * .15;
+          m.position.y = b.s[1] / 2 * m.scale.y;
+        });
+
+        R.render(sc, cam);
+        requestAnimationFrame(loop);
+      }
+
+      loop();
+    })();
+  </script>
+</body>
+</html>
